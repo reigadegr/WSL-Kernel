@@ -5,8 +5,8 @@ sudo apt install -y wget build-essential flex bison libssl-dev libelf-dev
 
 cd "${GITHUB_WORKSPACE}"
 
-wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.15.5.tar.xz
-tar xvf linux-5.15.5.tar.xz
+wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.15.5.tar.xz > /dev/null 2>&1
+tar xvf linux-5.15.5.tar.xz > /dev/null 2>&1
 
 cd linux-5.15.5
 cp ../config .config
