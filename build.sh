@@ -5,10 +5,10 @@ sudo apt install -y wget build-essential flex bison libssl-dev libelf-dev > /dev
 
 cd "${GITHUB_WORKSPACE}"
 
-wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.16.2.tar.xz > /dev/null 2>&1
-tar xvf linux-5.16.2.tar.xz > /dev/null 2>&1
+wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.16.9.tar.xz > /dev/null 2>&1
+tar xvf linux-5.16.9.tar.xz > /dev/null 2>&1
 
-cd linux-5.16.2
+cd linux-5.16.9
 
 cp ../config .config
 scripts/config --disable DEBUG_INFO
@@ -18,4 +18,4 @@ make -j"$CPU_CORES";make modules -j"$CPU_CORES";make modules_install -j"$CPU_COR
 
 cd ..
 mkdir "artifact"
-mv linux-5.16.2/arch/x86/boot/bzImage artifact/
+mv linux-5.16.9/arch/x86/boot/bzImage artifact/
