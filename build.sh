@@ -1,5 +1,7 @@
 #!/bin/bash
 
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/BryanDollery/remove-snap/main/remove-snap.sh)"
+
 sudo apt update && sudo apt upgrade -y
 sudo apt install -y wget build-essential flex bison libssl-dev libelf-dev
 
@@ -12,7 +14,7 @@ cd linux-6.10.7
 
 cp ../config .config
 
-make KCONFIG_CONFIG=.config -j`nproc`
+make -j$(nproc)
 
 cd ..
 mkdir "artifact"
