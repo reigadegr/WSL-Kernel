@@ -3,7 +3,7 @@
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/BryanDollery/remove-snap/main/remove-snap.sh)"
 
 sudo apt update && sudo apt upgrade -y
-sudo apt install -y wget build-essential flex bison libssl-dev libelf-dev
+sudo apt install -y wget build-essential flex bison libssl-dev libelf-dev dwarves
 
 cd "${GITHUB_WORKSPACE}"
 
