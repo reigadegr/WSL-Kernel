@@ -1,21 +1,19 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-sudo apt update && sudo apt dist-upgrade -y > /dev/null 2>&1
-sudo apt install -y wget build-essential flex bison libssl-dev libelf-dev > /dev/null 2>&1
+sudo apt update && sudo apt upgrade -y
+sudo apt install -y wget build-essential flex bison libssl-dev libelf-dev
 
 cd "${GITHUB_WORKSPACE}"
 
-wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.18.2.tar.xz > /dev/null 2>&1
-tar xvf linux-5.18.2.tar.xz > /dev/null 2>&1
+wget https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.10.7.tar.xz
+tar xvf linux-6.10.7.tar.xz
 
-cd linux-5.18.2
+cd linux-6.10.7
 
 cp ../config .config
-scripts/config --disable DEBUG_INFO
 
-CPU_CORES=$(($(grep -c processor < /proc/cpuinfo)*2))
-make -j"$CPU_CORES";make modules -j"$CPU_CORES";make modules_install -j"$CPU_CORES";make install -j"$CPU_CORES"
+make KCONFIG_CONFIG=.config -j`nproc`
 
 cd ..
 mkdir "artifact"
-mv linux-5.18.2/arch/x86/boot/bzImage artifact/
+mv linux-6.10.7/arch/x86/boot/bzImage artifact/
