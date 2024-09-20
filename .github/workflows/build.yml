@@ -1,8 +1,10 @@
 name: Build kernel
 on:
   push:
-    branches:    
+    branches:
       - main
+    paths-ignore:
+      - .github/workflows
 
 jobs:
   build:
