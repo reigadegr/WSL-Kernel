@@ -7,10 +7,10 @@ sudo apt install -y wget build-essential flex bison libssl-dev libelf-dev dwarve
 
 cd "${GITHUB_WORKSPACE}"
 
-wget https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.11.1.tar.xz
-tar xvf linux-6.11.1.tar.xz
+wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.10.102.tar.xz
+tar xvf linux-5.10.102.tar.xz
 
-cd linux-6.11.1
+cd linux-5.10.102*
 
 cp ../config .config
 
@@ -18,4 +18,4 @@ make -j$(nproc)
 
 cd ..
 mkdir "artifact"
-mv linux-6.11.1/arch/x86/boot/bzImage artifact/
+mv linux-5.10.102*/arch/x86/boot/bzImage artifact/
